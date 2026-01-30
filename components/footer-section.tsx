@@ -1,0 +1,44 @@
+'use client';
+
+import type React from "react";
+
+export default function FooterSection() {
+  const handleContactClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    const trigger = document.querySelector("[data-contact-trigger]") as HTMLElement | null;
+    trigger?.click();
+  };
+
+  return (
+    <footer className="w-full bg-[#2154D6] text-white">
+      <div className="px-8 py-8">
+        <div className="flex items-center gap-6">
+          <a href="/" className="text-white hover:text-white/90">
+            <img src="/logo-white.png" alt="Cloverbloom" className="h-8 w-auto" />
+          </a>
+          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/80">
+            <a href="https://cal.com/garrett-nelson/discovery-call" className="hover:text-white">
+              Let’s Talk
+            </a>
+            <a href="#" className="hover:text-white">About</a>
+            <a href="https://www.linkedin.com/in/garrettfnelson" className="hover:text-white">
+              LinkedIn
+            </a>
+            <a href="#" className="hover:text-white">Case Studies</a>
+            <a href="#contact" onClick={handleContactClick} className="hover:text-white">Contact</a>
+          </nav>
+        </div>
+        <p className="mt-6 text-xs leading-relaxed text-white/80">
+          Results vary by property, market, and owner involvement. Cloverbloom does not guarantee specific
+          financial outcomes or performance beyond any guarantees expressly outlined in a written agreement.
+          All information provided is for general informational purposes only and should not be construed as
+          financial, legal, or investment advice. Any examples or references are illustrative and not
+          indicative of typical results.
+        </p>
+        <p className="mt-3 text-xs text-white/80">
+          © 2026 Cloverbloom Wyoming LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}

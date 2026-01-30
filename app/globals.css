@@ -79,6 +79,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --color-1: 220 71% 54%;
+  --color-2: 210 85% 62%;
+  --color-3: 200 90% 58%;
+  --color-4: 230 80% 60%;
+  --color-5: 215 70% 50%;
 }
 
 .dark {
@@ -115,6 +120,19 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@keyframes rainbow {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.animate-rainbow {
+  animation: rainbow var(--speed, 2s) infinite linear;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -122,4 +140,30 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
 }

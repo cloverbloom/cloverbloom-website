@@ -9,27 +9,28 @@ export default function HeroSectionDemo() {
     <div className="w-full">
       <HeroSection
         logo={{
-          url: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=200&q=80",
+          url: "/DSC00581.png",
           alt: "Company Logo",
-          text: "Your Logo",
+          text: "Property Manager",
         }}
-        slogan="ELEVATE YOUR PERSPECTIVE"
+        slogan="GARRETT NELSON"
         title={
           <>
-            Each Peak <br />
-            <span className="text-primary">Teaches Something</span>
+            How Can I Turn Your Airbnb <br />
+            Into A <span className="text-[#2154D6]">Hands-Free Asset</span>?
           </>
         }
-        subtitle="Discover breathtaking landscapes and challenge yourself with our guided mountain expeditions. Join a community of adventurers."
+        subtitle="With obsessive management that makes you more money without Airbnb being a second job."
         callToAction={{
-          text: "JOIN US TO EXPLORE",
-          href: "#explore",
+          text: "JOIN NOW TO SAVE 5%",
+          href: "https://cal.com/garrett-nelson/discovery-call",
         }}
-        backgroundImage="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1600&q=80"
+        backgroundImages={["/hero-garrett.png", "/hero-garrett.png", "/hero-garrett.png"]}
         contactInfo={{
-          website: "yourwebsite.com",
-          phone: "+1 (555) 123-4567",
-          address: "20 Fieldstone Dr, Roswell, GA",
+          website: "",
+          phone: "+1 (970) 631-5800",
+          address: "San Diego, CA",
+          email: "garrett@cloverbloom.co",
         }}
       />
     </div>

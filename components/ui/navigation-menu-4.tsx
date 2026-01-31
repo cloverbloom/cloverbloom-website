@@ -40,16 +40,16 @@ import TeamSection from "@/components/ui/team";
 const navigationLinks = [
   {
     href: "https://cal.com/garrett-nelson/discovery-call",
-    label: "Let's Talk",
+    label: "Calendar",
     external: true,
   },
-  { href: "#", label: "About" },
+  { href: "#meet-garrett", label: "About" },
+  { href: "#about-cloverbloom", label: "Case Studies" },
   {
     href: "https://www.linkedin.com/in/garrettfnelson",
     label: "LinkedIn",
     external: true,
   },
-  { href: "#", label: "Case Studies" },
   { href: "#", label: "Contact", type: "dialog" as const },
 ];
 
@@ -94,17 +94,16 @@ export default function NavigationMenu4() {
   return (
     <Dialog>
       <header className="border-b border-transparent">
-        <div className="flex h-16 items-center justify-between gap-4">
-          {/* Left side */}
-          <div className="flex items-center gap-2 pl-8 md:pl-12 lg:pl-16">
+        <div className="flex h-16 items-center justify-between gap-4 px-8 md:px-12 lg:px-16">
+          <div className="flex items-center gap-4">
             {/* Mobile menu trigger */}
             <Popover>
               <PopoverTrigger asChild>
-                <Button className="group size-8 md:hidden" variant="ghost" size="icon">
+                <Button className="group size-11 md:hidden" variant="ghost" size="icon">
                   <svg
                     className="pointer-events-none"
-                    width={16}
-                    height={16}
+                    width={20}
+                    height={20}
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -128,80 +127,74 @@ export default function NavigationMenu4() {
                   </svg>
                 </Button>
               </PopoverTrigger>
-            <PopoverContent align="start" className="w-64 p-1 md:hidden">
+              <PopoverContent align="start" className="w-64 p-2 md:hidden">
                 <NavigationMenu className="max-w-none *:w-full">
-                  <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
+                  <NavigationMenuList className="flex-col items-start gap-1 md:gap-2">
                     {navigationLinks.map((link, index) => (
                       <NavigationMenuItem key={index} className="w-full">
-                        {link.type === "dialog" ? (
-                          <DialogTrigger asChild>
-                            <button
-                              data-contact-trigger
-                              className="w-full py-1.5 text-left text-sm text-muted-foreground hover:text-primary"
-                            >
-                              {link.label}
-                            </button>
-                          </DialogTrigger>
-                        ) : (
-                          <NavigationMenuLink asChild>
+                        <NavigationMenuLink asChild>
+                          {link.type === "dialog" ? (
+                            <DialogTrigger asChild>
+                              <a className="px-2 py-2">
+                                {link.label}
+                              </a>
+                            </DialogTrigger>
+                          ) : (
                             <a
                               href={link.href}
                               target={link.external ? "_blank" : undefined}
                               rel={link.external ? "noopener noreferrer" : undefined}
-                              className="py-1.5"
+                              className="px-2 py-2"
                             >
                               {link.label}
                             </a>
-                          </NavigationMenuLink>
-                        )}
+                          )}
+                        </NavigationMenuLink>
                       </NavigationMenuItem>
                     ))}
                   </NavigationMenuList>
                 </NavigationMenu>
               </PopoverContent>
             </Popover>
-            {/* Main nav */}
-            <div className="flex items-center gap-6">
-              <a href="#" className="text-primary hover:text-primary/90">
-                <img src="/logo.png" alt="Cloverbloom logo" className="h-8 w-auto" />
-              </a>
-              {/* Navigation menu */}
-              <div className="max-md:hidden">
-                <NavigationMenu>
-                  <NavigationMenuList>
-                    {navigationLinks.map((link, index) => (
-                      <NavigationMenuItem key={index}>
-                        {link.type === "dialog" ? (
-                          <DialogTrigger asChild>
-                            <button
-                              data-contact-trigger
-                              className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
-                            >
-                              {link.label}
-                            </button>
-                          </DialogTrigger>
-                        ) : (
-                          <NavigationMenuLink asChild>
-                            <a
-                              href={link.href}
-                              target={link.external ? "_blank" : undefined}
-                              rel={link.external ? "noopener noreferrer" : undefined}
-                              className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
-                            >
-                              {link.label}
-                            </a>
-                          </NavigationMenuLink>
-                        )}
-                      </NavigationMenuItem>
-                    ))}
-                  </NavigationMenuList>
-                  <NavigationMenuViewport />
-                </NavigationMenu>
-              </div>
+            {/* Logo */}
+            <a href="#" className="text-primary hover:text-primary/90 order-first md:order-none">
+              <img src="/logo-blue.webp" alt="Cloverbloom logo" className="h-10 w-auto shrink-0" />
+            </a>
+            {/* Desktop nav */}
+            <div className="max-md:hidden">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  {navigationLinks.map((link, index) => (
+                    <NavigationMenuItem key={index}>
+                      {link.type === "dialog" ? (
+                        <DialogTrigger asChild>
+                          <button
+                            data-contact-trigger
+                            className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
+                          >
+                            {link.label}
+                          </button>
+                        </DialogTrigger>
+                      ) : (
+                        <NavigationMenuLink asChild>
+                          <a
+                            href={link.href}
+                            target={link.external ? "_blank" : undefined}
+                            rel={link.external ? "noopener noreferrer" : undefined}
+                            className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
+                          >
+                            {link.label}
+                          </a>
+                        </NavigationMenuLink>
+                      )}
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+                <NavigationMenuViewport />
+              </NavigationMenu>
             </div>
           </div>
-          {/* Right side */}
-          <div className="flex items-center gap-4 pr-4 md:pr-6">
+          <div className="flex items-center gap-4">
             <NotificationMenu />
           </div>
         </div>

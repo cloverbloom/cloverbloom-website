@@ -13,7 +13,7 @@ export default function FooterSection() {
     <footer className="w-full bg-[#2154D6] text-white">
       <div className="px-8 py-8">
         <div className="flex items-center gap-6">
-          <a href="/" className="text-white hover:text-white/90 hidden sm:block">
+          <a href="#top" className="text-white hover:text-white/90 hidden sm:block">
             <img src="/logo-white.webp" alt="Cloverbloom" className="h-8 w-auto" />
           </a>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/80">

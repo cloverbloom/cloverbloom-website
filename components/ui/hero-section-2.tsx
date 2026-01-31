@@ -25,7 +25,17 @@ const InfoIcon = ({
 };
 
 // Prop types for the HeroSection component
-interface HeroSectionProps extends Omit<React.HTMLAttributes<HTMLElement>, "title" | "onDrag" | "onDragStart" | "onDragEnd"> {
+interface HeroSectionProps
+  extends Omit<
+    React.HTMLAttributes<HTMLElement>,
+    | "title"
+    | "onDrag"
+    | "onDragStart"
+    | "onDragEnd"
+    | "onAnimationStart"
+    | "onAnimationEnd"
+    | "onAnimationIteration"
+  > {
   logo?: {
     url: string;
     alt: string;

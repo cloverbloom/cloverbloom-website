@@ -36,6 +36,28 @@ import {
 } from "@/components/ui/dialog";
 import TeamSection from "@/components/ui/team";
 
+const getScrollOffset = () => {
+  const value = getComputedStyle(document.documentElement).scrollPaddingTop;
+  const parsed = Number.parseFloat(value);
+  return Number.isFinite(parsed) ? parsed : 0;
+};
+
+const handleAnchorClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const href = event.currentTarget.getAttribute("href");
+  if (!href || !href.startsWith("#")) return;
+  const target = document.querySelector(href);
+  if (!target) return;
+  event.preventDefault();
+  const offset = getScrollOffset();
+  const extra = Number.parseFloat(event.currentTarget.dataset.offset ?? "0");
+  const extraOffset = Number.isFinite(extra) ? extra : 0;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset + extraOffset;
+  window.requestAnimationFrame(() => {
+    window.scrollTo({ top, behavior: "smooth" });
+    history.pushState(null, "", href);
+  });
+};
+
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   {
@@ -145,6 +167,8 @@ export default function NavigationMenu4() {
                               target={link.external ? "_blank" : undefined}
                               rel={link.external ? "noopener noreferrer" : undefined}
                               className="px-2 py-2"
+                              onClick={handleAnchorClick}
+                              data-offset={link.href === "#meet-garrett" ? "65" : undefined}
                             >
                               {link.label}
                             </a>
@@ -182,6 +206,8 @@ export default function NavigationMenu4() {
                             target={link.external ? "_blank" : undefined}
                             rel={link.external ? "noopener noreferrer" : undefined}
                             className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
+                            onClick={handleAnchorClick}
+                            data-offset={link.href === "#meet-garrett" ? "65" : undefined}
                           >
                             {link.label}
                           </a>

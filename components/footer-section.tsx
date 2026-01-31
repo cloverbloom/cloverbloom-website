@@ -8,6 +8,23 @@ export default function FooterSection() {
     const trigger = document.querySelector("[data-contact-trigger]") as HTMLElement | null;
     trigger?.click();
   };
+  const handleAnchorClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = event.currentTarget.getAttribute("href");
+    if (!href || !href.startsWith("#")) return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    event.preventDefault();
+    const value = getComputedStyle(document.documentElement).scrollPaddingTop;
+    const offset = Number.parseFloat(value);
+    const safeOffset = Number.isFinite(offset) ? offset : 0;
+    const extra = Number.parseFloat(event.currentTarget.dataset.offset ?? "0");
+    const extraOffset = Number.isFinite(extra) ? extra : 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - safeOffset + extraOffset;
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top, behavior: "smooth" });
+      history.pushState(null, "", href);
+    });
+  };
 
   return (
     <footer className="w-full bg-[#2154D6] text-white">
@@ -25,8 +42,15 @@ export default function FooterSection() {
             >
               Calendar
             </a>
-            <a href="#meet-garrett" className="hover:text-white">About</a>
-            <a href="#about-cloverbloom" className="hover:text-white">Case Studies</a>
+            <a
+              href="#meet-garrett"
+              data-offset="65"
+              onClick={handleAnchorClick}
+              className="hover:text-white"
+            >
+              About
+            </a>
+            <a href="#about-cloverbloom" onClick={handleAnchorClick} className="hover:text-white">Case Studies</a>
             <a
               href="https://www.linkedin.com/in/garrettfnelson"
               className="hover:text-white"

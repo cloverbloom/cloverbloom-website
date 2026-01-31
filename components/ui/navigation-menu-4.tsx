@@ -37,9 +37,11 @@ import {
 import TeamSection from "@/components/ui/team";
 
 const getScrollOffset = () => {
-  const value = getComputedStyle(document.documentElement).scrollPaddingTop;
-  const parsed = Number.parseFloat(value);
-  return Number.isFinite(parsed) ? parsed : 0;
+  const banner = document.querySelector("[data-banner]") as HTMLElement | null;
+  if (!banner) {
+    return 0;
+  }
+  return banner.getBoundingClientRect().height;
 };
 
 const handleAnchorClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -168,7 +170,7 @@ export default function NavigationMenu4() {
                               rel={link.external ? "noopener noreferrer" : undefined}
                               className="px-2 py-2"
                               onClick={handleAnchorClick}
-                              data-offset={link.href === "#meet-garrett" ? "65" : undefined}
+                              data-offset="0"
                             >
                               {link.label}
                             </a>
@@ -207,7 +209,7 @@ export default function NavigationMenu4() {
                             rel={link.external ? "noopener noreferrer" : undefined}
                             className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
                             onClick={handleAnchorClick}
-                            data-offset={link.href === "#meet-garrett" ? "65" : undefined}
+                            data-offset="0"
                           >
                             {link.label}
                           </a>

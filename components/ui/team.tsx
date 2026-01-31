@@ -10,7 +10,7 @@ const members = [
   {
     name: "Garrett Nelson",
     role: "Founder",
-    avatar: "/headshot.png",
+    avatar: "/footer-garrett.webp",
     phone: "+1 (970) 631-5800",
     email: "garrett@cloverbloom.co",
     linkedin: "https://www.linkedin.com/in/garrettfnelson",

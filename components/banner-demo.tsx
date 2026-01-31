@@ -6,26 +6,26 @@ import { Banner } from "@/components/ui/banner";
 
 function BannerNewFeature() {
   return (
-    <div className="fixed left-0 right-0 top-0 z-50">
+    <div className="fixed left-0 right-0 top-0 z-50" data-banner>
       <Banner
         variant="default"
         className="bg-black text-white border-white/10"
         rounded="none"
       >
         <div className="w-full">
-          <p className="flex justify-center text-sm">
+          <p className="flex justify-center whitespace-nowrap text-[10px] leading-tight sm:text-sm sm:whitespace-normal">
             <a
               href="https://cal.com/garrett-nelson/discovery-call"
               className="group"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="me-1 text-base leading-none">✨</span>
+              <span className="me-1 text-sm leading-none sm:text-base">✨</span>
               <span className="font-semibold">Founding Clients Offer:</span>{" "}
               Save 5% On Management Fees
               <ArrowRight
                 className="-mt-0.5 ms-2 inline-flex opacity-60 transition-transform group-hover:translate-x-0.5"
-                size={16}
+                size={14}
                 strokeWidth={2}
                 aria-hidden="true"
               />

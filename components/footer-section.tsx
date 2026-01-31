@@ -14,9 +14,8 @@ export default function FooterSection() {
     const target = document.querySelector(href);
     if (!target) return;
     event.preventDefault();
-    const value = getComputedStyle(document.documentElement).scrollPaddingTop;
-    const offset = Number.parseFloat(value);
-    const safeOffset = Number.isFinite(offset) ? offset : 0;
+    const banner = document.querySelector("[data-banner]") as HTMLElement | null;
+    const safeOffset = banner ? banner.getBoundingClientRect().height : 0;
     const extra = Number.parseFloat(event.currentTarget.dataset.offset ?? "0");
     const extraOffset = Number.isFinite(extra) ? extra : 0;
     const top = target.getBoundingClientRect().top + window.scrollY - safeOffset + extraOffset;
@@ -48,7 +47,7 @@ export default function FooterSection() {
             </a>
             <a
               href="#meet-garrett"
-              data-offset="65"
+              data-offset="0"
               onClick={handleAnchorClick}
               className="hover:text-white"
             >

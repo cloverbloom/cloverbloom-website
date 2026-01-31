@@ -9,7 +9,7 @@ export default function HeroSectionDemo() {
     <div className="w-full">
       <HeroSection
         logo={{
-          url: "/DSC00581.png",
+          url: "/profile-garrett.webp",
           alt: "Company Logo",
           text: "Property Manager",
         }}
@@ -25,7 +25,7 @@ export default function HeroSectionDemo() {
           text: "JOIN NOW TO SAVE 5%",
           href: "https://cal.com/garrett-nelson/discovery-call",
         }}
-        backgroundImages={["/hero-garrett.png", "/hero-garrett.png", "/hero-garrett.png"]}
+        backgroundImages={["/hero-garrett.webp", "/hero-garrett.webp", "/hero-garrett.webp"]}
         contactInfo={{
           website: "",
           phone: "+1 (970) 631-5800",

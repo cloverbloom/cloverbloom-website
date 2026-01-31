@@ -41,12 +41,7 @@ export function ProfileCard(props: ProfileCardProps) {
       className={cn("relative w-full overflow-hidden bg-black text-white scroll-mt-[-33px]", className)}
       onMouseMove={handleMouseMove}
     >
-      <div
-        className="pointer-events-none absolute -inset-px transition duration-500"
-        style={{
-          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(33, 84, 214, 0.22), transparent 80%)`,
-        }}
-      />
+      <div className="pointer-events-none absolute -inset-px" />
       <BGPattern variant="dots" mask="fade-edges" fill="rgba(255,255,255,0.45)" size={14} className="opacity-90" />
       <div className="relative mx-auto max-w-5xl px-4 py-16 md:px-8 lg:px-16">
 

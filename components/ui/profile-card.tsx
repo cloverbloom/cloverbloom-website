@@ -71,7 +71,7 @@ export function ProfileCard(props: ProfileCardProps) {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="ml-[-70px] mt-16 z-10 w-full max-w-2xl rounded-3xl border border-white/20 bg-black/45 p-8 shadow-2xl backdrop-blur-2xl"
           >
             <div className="mb-5">
@@ -90,7 +90,7 @@ export function ProfileCard(props: ProfileCardProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="md:hidden"
         >
           <div className="mb-6 aspect-square overflow-hidden rounded-3xl bg-gray-200">

@@ -22,12 +22,12 @@ export function AboutCloverbloom() {
       <img
         src="/arrow-3.svg"
         alt=""
-        className="pointer-events-none absolute left-[calc(50%+380px)] top-[calc(75%-160px)] hidden w-12 opacity-80 sm:block md:w-16"
+        className="pointer-events-none absolute left-[calc(50%+380px)] top-[calc(75%-160px)] w-12 opacity-80 max-sm:hidden md:w-16"
         aria-hidden="true"
         draggable={false}
       />
       <CTA />
-      <div className="pointer-events-none relative z-10 mt-6 flex w-full items-end justify-center sm:absolute sm:inset-x-0 sm:bottom-0 sm:justify-end sm:pr-6 md:pr-10 2xl:pr-10">
+      <div className="pointer-events-none relative z-10 mt-6 flex w-full items-end justify-center max-sm:items-center max-sm:justify-center sm:absolute sm:inset-x-0 sm:bottom-0 sm:mt-0 sm:justify-end sm:pr-6 md:pr-10 2xl:pr-10">
         <img
           src="/footer-garrett.webp"
           alt="Garrett headshot"

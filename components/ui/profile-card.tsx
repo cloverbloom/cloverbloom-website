@@ -24,7 +24,7 @@ export function ProfileCard(props: ProfileCardProps) {
       "\"I work with owners who want their Airbnb to function like an asset, not a second job.\"",
       "Previously working as an Electrical Engineer for the past two years, a passion for real estate and hospitality drove a massive career change. After working with the BNB Investor Academy for the last 8 months, Garrett decided to go all-in on Airbnb with one clear objective — provide owners so much value they wish they'd started sooner.",
     ],
-    imageUrl = "/meet-garrett.webp",
+    imageUrl = "/meet-garrett.png",
     className,
   } = props;
 
@@ -37,8 +37,7 @@ export function ProfileCard(props: ProfileCardProps) {
 
   return (
     <section
-      id="meet-garrett"
-      className={cn("relative w-full overflow-hidden bg-black text-white scroll-mt-[-30px]", className)}
+      className={cn("relative w-full overflow-hidden bg-black text-white", className)}
       onMouseMove={handleMouseMove}
     >
       <div
@@ -64,7 +63,7 @@ export function ProfileCard(props: ProfileCardProps) {
           <img
             src="/arrow-2.svg"
             alt=""
-            className="pointer-events-none absolute left-[220px] top-[550px] w-36 origin-top-left rotate-[5deg] scale-y-90 opacity-60 max-sm:hidden"
+            className="pointer-events-none absolute left-[220px] top-[550px] w-36 origin-top-left rotate-[5deg] scale-y-90 opacity-60"
             aria-hidden="true"
             draggable={false}
           />

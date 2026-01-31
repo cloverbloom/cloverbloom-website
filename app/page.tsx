@@ -17,12 +17,12 @@ export default function Home() {
         <img
           src="/arrow-1.svg"
           alt=""
-          className="pointer-events-none absolute left-[calc(40%+115px)] top-[calc(32%-85px)] w-44 origin-center rotate-[-5deg] opacity-80 max-sm:hidden md:w-64 lg:w-80"
+          className="pointer-events-none absolute left-[calc(40%+115px)] top-[calc(32%-85px)] hidden w-44 origin-center rotate-[-5deg] opacity-80 sm:block md:w-64 lg:w-80"
           aria-hidden="true"
           draggable={false}
         />
         <div className="h-0" aria-hidden="true" />
-        <div className="pointer-events-none relative z-20 mt-6 flex w-full items-end justify-center max-sm:items-center max-sm:justify-center sm:absolute sm:inset-x-0 sm:bottom-0 sm:-mb-4 sm:mt-0 sm:justify-end sm:pr-10 md:pr-16">
+        <div className="pointer-events-none relative z-20 mt-6 flex w-full items-end justify-center sm:absolute sm:inset-x-0 sm:bottom-0 sm:-mb-4 sm:justify-end sm:pr-10 md:pr-16">
           <div className="pointer-events-auto flex flex-col items-center gap-4">
             <a
               href="https://cal.com/garrett-nelson/discovery-call"

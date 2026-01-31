@@ -13,18 +13,28 @@ export default function FooterSection() {
     <footer className="w-full bg-[#2154D6] text-white">
       <div className="px-8 py-8">
         <div className="flex items-center gap-6">
-          <a href="/" className="text-white hover:text-white/90">
-            <img src="/logo-white.png" alt="Cloverbloom" className="h-8 w-auto" />
+          <a href="/" className="text-white hover:text-white/90 hidden sm:block">
+            <img src="/logo-white.webp" alt="Cloverbloom" className="h-8 w-auto" />
           </a>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/80">
-            <a href="https://cal.com/garrett-nelson/discovery-call" className="hover:text-white">
-              Let’s Talk
+            <a
+              href="https://cal.com/garrett-nelson/discovery-call"
+              className="hover:text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Calendar
             </a>
-            <a href="#" className="hover:text-white">About</a>
-            <a href="https://www.linkedin.com/in/garrettfnelson" className="hover:text-white">
+            <a href="#meet-garrett" className="hover:text-white">About</a>
+            <a href="#about-cloverbloom" className="hover:text-white">Case Studies</a>
+            <a
+              href="https://www.linkedin.com/in/garrettfnelson"
+              className="hover:text-white"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               LinkedIn
             </a>
-            <a href="#" className="hover:text-white">Case Studies</a>
             <a href="#contact" onClick={handleContactClick} className="hover:text-white">Contact</a>
           </nav>
         </div>

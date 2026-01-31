@@ -98,10 +98,10 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
 
     const [copied, setCopied] = React.useState<null | "phone" | "email">(null);
 
-    const handleCopy = async (value: string, type: "phone" | "email") => {
+    const handleCopy = async (value: string) => {
       try {
         await navigator.clipboard.writeText(value);
-        setCopied(type);
+        setCopied("phone");
         window.setTimeout(() => setCopied(null), 2000);
       } catch {
         setCopied(null);
@@ -204,7 +204,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                         key={`${item.type}-${item.value}`}
                         type="button"
                         className="flex items-center text-left cursor-pointer"
-                        onClick={() => handleCopy(item.value, item.type)}
+                    onClick={() => handleCopy(item.value)}
                       >
                         <InfoIcon type={item.type} />
                         <span>{item.value}</span>

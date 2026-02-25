@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
           <p>
             Cloverbloom California, LLC (“Cloverbloom,” “Company,” “we,” “us,” or “our")
             operates www.cloverbloom.co (the “Website") and provides short-term rental
-            consulting and property management services.
+            consulting and operational management services.
           </p>
           <p>
             This Privacy Policy explains how we collect, use, disclose, and safeguard
@@ -118,7 +118,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <p>
             We use this information solely for legitimate business outreach related to
-            property management and consulting services.
+            operational management and consulting services.
           </p>
           <p>
             If you prefer not to be contacted, you may request removal at any time.

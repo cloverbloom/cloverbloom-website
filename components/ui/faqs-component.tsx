@@ -10,15 +10,11 @@ export default function FAQs() {
             question: 'What is Cloverbloom STR Operations?',
             answer: (
                 <>
-                    It’s not traditional property management. It’s a hands-on co-hosting partnership.
+                    Cloverbloom STR Operations is a hands-on co-hosting service built for performance.
                     <br />
-                    No fluff. No theory. I focus on execution.
+                    Cloverbloom manages guest communication, pricing, calendar operations, and listing optimization.
                     <br />
-                    First, I analyze your listing, pricing, and operations to identify high-impact opportunities to increase revenue and reduce friction.
-                    <br />
-                    These are the same frameworks I use on every listing I manage.
-                    <br />
-                    Then I step in and run the day-to-day: guest communication, pricing, calendar management, and ongoing optimization—so your Airbnb performs like an asset, not a second job.
+                    The goal is simple: run your Airbnb like an asset, not a second job.
                 </>
             ),
         },
@@ -27,13 +23,11 @@ export default function FAQs() {
             question: 'How do I get started?',
             answer: (
                 <>
-                    I don’t work with every property.
+                    Start with a discovery call.
                     <br />
-                    To get started, I first make sure your property is a good fit for co-hosting and that I can realistically improve its performance.
+                    Cloverbloom reviews your listing, market, and goals to confirm fit and performance upside.
                     <br />
-                    Book an intro call so I can review your listing, goals, and market.
-                    <br />
-                    If it’s a fit, I’ll walk you through next steps.
+                    If it’s a fit, you receive a clear implementation plan and next steps.
                 </>
             ),
         },
@@ -42,13 +36,11 @@ export default function FAQs() {
             question: 'Who is it a good fit for?',
             answer: (
                 <>
-                    Cloverbloom is not for every Airbnb owner.
+                    Cloverbloom is a fit for owners who want stronger STR performance without running daily operations.
                     <br />
-                    I work with owners who are actively hosting, care about performance, and want their property run like a real business—not a side hobby.
+                    The best matches are active listings with room to improve pricing, response systems, and overall execution.
                     <br />
-                    If you’re generating revenue (or close to it), operating in a market I understand, and open to operational and pricing changes, we’re likely a fit.
-                    <br />
-                    The best way to find out is to book a call and see if working together makes sense.
+                    Owners who treat the property like a business typically see the best outcomes.
                 </>
             ),
         },
@@ -57,13 +49,11 @@ export default function FAQs() {
             question: 'Who will I work with?',
             answer: (
                 <>
-                    You’ll work directly with me.
+                    You work directly with Cloverbloom’s lead operator, Garrett Nelson.
                     <br />
-                    Cloverbloom isn’t handed off to junior account managers.
+                    Your property is not handed off to junior account managers.
                     <br />
-                    Your property is overseen by the same operator responsible for pricing, guest experience, and performance across the listings I manage.
-                    <br />
-                    When needed, you’ll also get direct input on strategy, operations, and revenue optimization—so nothing critical is left unaddressed.
+                    Strategy, execution, and accountability stay with one operator.
                 </>
             ),
         },
@@ -72,13 +62,11 @@ export default function FAQs() {
             question: 'What makes Cloverbloom different?',
             answer: (
                 <>
-                    Cloverbloom is operator-led, not outsourced.
+                    Cloverbloom is operator-led and execution-first.
                     <br />
-                    Your property is managed by me—the same person responsible for pricing, guest experience, and performance across the listings I manage—so nothing slips through the cracks.
+                    Pricing, guest communication, and operations are managed together under one accountable system.
                     <br />
-                    I also hold my cleaning partners to strict, non-negotiable standards through detailed checklists and accountability.
-                    <br />
-                    That ruthless attention to detail is what keeps performance high and guest issues low.
+                    Cleaning quality control is strict and consistent, which helps protect reviews and revenue.
                 </>
             ),
         },

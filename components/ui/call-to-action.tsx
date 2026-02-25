@@ -1,4 +1,7 @@
+"use client";
+
 import { RainbowButton } from "@/components/ui/rainbow-button";
+import { openEvaluationDialog } from "@/lib/evaluation-intake";
 
 function CTA() {
   return (
@@ -16,15 +19,13 @@ function CTA() {
             </p>
           </div>
           <div className="flex flex-row">
-            <a
-              href="https://cal.com/garrett-nelson/discovery-call"
-              target="_blank"
-              rel="noopener noreferrer"
+            <RainbowButton
+              type="button"
+              className="text-base"
+              onClick={() => openEvaluationDialog()}
             >
-              <RainbowButton className="text-base">
-                Jump On a Call Today!
-              </RainbowButton>
-            </a>
+              Create my FREE Income Projection
+            </RainbowButton>
           </div>
         </div>
       </div>

@@ -74,7 +74,7 @@ export default function FooterSection() {
             <img src="/logo-white.webp" alt="Cloverbloom" className="h-8 w-auto" />
           </a>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/80">
-            <a href="#" onClick={handleEvaluationClick} className="hover:text-white">FREE Income Projection</a>
+            <a href="#" onClick={handleEvaluationClick} className="hover:text-white">Income Projection</a>
             <a
               href="https://cal.com/garrett-nelson/discovery-call"
               className="hover:text-white"

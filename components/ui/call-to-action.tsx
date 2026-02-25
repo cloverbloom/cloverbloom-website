@@ -10,9 +10,9 @@ function CTA() {
               Put your Airbnb on autopilot.
             </h3>
             <p className="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl">
-              Owning a short-term rental shouldn’t feel like a second job. I replace day-to-day
-              operational stress with professional management, clear strategy, and performance-driven
-              execution—so your property runs better without more effort from you.
+              Owning a short-term rental shouldn’t feel like a second job. Replace day-to-day
+              operational stress with professional strategies, clear communication, and performance-driven
+              execution — so your property runs better than ever with zero effort.
             </p>
           </div>
           <div className="flex flex-row">

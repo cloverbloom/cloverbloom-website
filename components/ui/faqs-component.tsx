@@ -7,7 +7,7 @@ export default function FAQs() {
     const faqItems = [
         {
             id: 'item-1',
-            question: 'What is Cloverbloom Co-Hosting?',
+            question: 'What is Cloverbloom STR Operations?',
             answer: (
                 <>
                     It’s not traditional property management. It’s a hands-on co-hosting partnership.
@@ -97,7 +97,7 @@ export default function FAQs() {
                         <h2 className="text-foreground text-3xl font-semibold md:text-4xl">FAQs</h2>
                         <p className="font-semibold text-foreground">Garrett Nelson</p>
                         <p className="text-muted-foreground whitespace-nowrap text-sm md:text-base">
-                            What does working with me look like?
+                            What does working with Cloverbloom look like?
                         </p>
                     </div>
 

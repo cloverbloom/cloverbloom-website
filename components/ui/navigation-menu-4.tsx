@@ -1,18 +1,20 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Bell } from "lucide-react";
 import { CircleAlert } from "lucide-react";
 
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import { EvaluationIntakeDialog } from "@/components/ui/evaluation-intake-dialog";
+import { NOTIFICATION_DURATION_MS } from "@/lib/notifications";
+import { openEvaluationDialog } from "@/lib/evaluation-intake";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import {
@@ -65,6 +67,7 @@ const handleAnchorClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
+  { href: "#", label: "Income Projection", type: "evaluation" as const },
   {
     href: "https://cal.com/garrett-nelson/discovery-call",
     label: "Calendar",
@@ -80,7 +83,7 @@ function NotificationMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="size-8 relative">
+        <Button variant="ghost" size="icon" className="size-8 relative cursor-pointer">
           <Bell className="h-4 w-4" />
           <Badge
             variant="destructive"
@@ -134,7 +137,11 @@ export default function NavigationMenu4() {
     setShowCaseStudiesNotice(true);
     caseStudiesTimeoutRef.current = window.setTimeout(() => {
       setShowCaseStudiesNotice(false);
-    }, 2000);
+    }, NOTIFICATION_DURATION_MS);
+  };
+  const handleEvaluationClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    openEvaluationDialog();
   };
 
   React.useEffect(() => {
@@ -153,7 +160,7 @@ export default function NavigationMenu4() {
             {/* Mobile menu trigger */}
             <Popover>
               <PopoverTrigger asChild>
-                <Button className="group size-11 md:hidden" variant="ghost" size="icon">
+                <Button className="group size-11 cursor-pointer md:hidden" variant="ghost" size="icon">
                   <svg
                     className="pointer-events-none"
                     width={20}
@@ -189,14 +196,22 @@ export default function NavigationMenu4() {
                         <NavigationMenuLink asChild>
                           {link.type === "dialog" ? (
                             <DialogTrigger asChild>
-                              <a className="px-2 py-2">
+                              <a className="cursor-pointer px-2 py-2">
                                 {link.label}
                               </a>
                             </DialogTrigger>
+                          ) : link.type === "evaluation" ? (
+                            <button
+                              type="button"
+                              className="w-full cursor-pointer px-2 py-2 text-left"
+                              onClick={handleEvaluationClick}
+                            >
+                              {link.label}
+                            </button>
                           ) : link.type === "comingSoon" ? (
                             <button
                               type="button"
-                              className="w-full px-2 py-2 text-left"
+                              className="w-full cursor-pointer px-2 py-2 text-left"
                               onClick={handleCaseStudiesClick}
                             >
                               {link.label}
@@ -206,7 +221,7 @@ export default function NavigationMenu4() {
                               href={link.href}
                               target={link.external ? "_blank" : undefined}
                               rel={link.external ? "noopener noreferrer" : undefined}
-                              className="px-2 py-2"
+                              className="cursor-pointer px-2 py-2"
                               onClick={handleAnchorClick}
                               data-offset="0"
                             >
@@ -221,9 +236,9 @@ export default function NavigationMenu4() {
               </PopoverContent>
             </Popover>
             {/* Logo */}
-            <a href="#" className="text-primary hover:text-primary/90 order-first md:order-none">
+            <Link href="/" className="text-primary hover:text-primary/90 order-first cursor-pointer md:order-none">
               <img src="/logo-blue.webp" alt="Cloverbloom logo" className="h-10 w-auto shrink-0" />
-            </a>
+            </Link>
             {/* Desktop nav */}
             <div className="max-md:hidden">
               <NavigationMenu>
@@ -234,15 +249,23 @@ export default function NavigationMenu4() {
                         <DialogTrigger asChild>
                           <button
                             data-contact-trigger
-                            className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
+                            className="text-muted-foreground hover:text-primary cursor-pointer py-1.5 px-2 font-medium"
                           >
                             {link.label}
                           </button>
                         </DialogTrigger>
+                      ) : link.type === "evaluation" ? (
+                        <button
+                          type="button"
+                          className="text-muted-foreground hover:text-primary cursor-pointer py-1.5 px-2 font-medium"
+                          onClick={handleEvaluationClick}
+                        >
+                          {link.label}
+                        </button>
                       ) : link.type === "comingSoon" ? (
                         <button
                           type="button"
-                          className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
+                          className="text-muted-foreground hover:text-primary cursor-pointer py-1.5 px-2 font-medium"
                           onClick={handleCaseStudiesClick}
                         >
                           {link.label}
@@ -253,7 +276,7 @@ export default function NavigationMenu4() {
                             href={link.href}
                             target={link.external ? "_blank" : undefined}
                             rel={link.external ? "noopener noreferrer" : undefined}
-                            className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
+                            className="text-muted-foreground hover:text-primary cursor-pointer py-1.5 px-2 font-medium"
                             onClick={handleAnchorClick}
                             data-offset="0"
                           >
@@ -271,6 +294,10 @@ export default function NavigationMenu4() {
           <div className="flex items-center gap-4">
             <NotificationMenu />
           </div>
+        </div>
+        <div className="px-8 pb-2 text-center md:px-12 lg:px-16">
+          <p className="text-lg font-bold text-foreground">CLOVERBLOOM</p>
+          <p className="text-xs tracking-wider text-muted-foreground">STR Operations</p>
         </div>
       </header>
       <div
@@ -297,6 +324,7 @@ export default function NavigationMenu4() {
         </DialogHeader>
         <TeamSection />
       </DialogContent>
+      <EvaluationIntakeDialog />
     </Dialog>
   );
 }

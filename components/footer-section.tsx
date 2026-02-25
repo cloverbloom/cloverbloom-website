@@ -5,6 +5,8 @@ import Link from "next/link";
 import { CircleAlert } from "lucide-react";
 
 import { Alert } from "@/components/ui/alert";
+import { openEvaluationDialog } from "@/lib/evaluation-intake";
+import { NOTIFICATION_DURATION_MS } from "@/lib/notifications";
 
 export default function FooterSection() {
   const [showCaseStudiesNotice, setShowCaseStudiesNotice] = React.useState(false);
@@ -31,7 +33,17 @@ export default function FooterSection() {
     setShowCaseStudiesNotice(true);
     caseStudiesTimeoutRef.current = window.setTimeout(() => {
       setShowCaseStudiesNotice(false);
-    }, 2000);
+    }, NOTIFICATION_DURATION_MS);
+  };
+  const handleTopClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  };
+  const handleEvaluationClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    openEvaluationDialog();
   };
   const handleAnchorClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     const href = event.currentTarget.getAttribute("href");
@@ -56,12 +68,13 @@ export default function FooterSection() {
         <div className="flex items-center gap-6">
           <a
             href="#top"
-            onClick={handleAnchorClick}
+            onClick={handleTopClick}
             className="text-white hover:text-white/90 hidden sm:block"
           >
             <img src="/logo-white.webp" alt="Cloverbloom" className="h-8 w-auto" />
           </a>
           <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/80">
+            <a href="#" onClick={handleEvaluationClick} className="hover:text-white">FREE Income Projection</a>
             <a
               href="https://cal.com/garrett-nelson/discovery-call"
               className="hover:text-white"

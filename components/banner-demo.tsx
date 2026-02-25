@@ -14,9 +14,9 @@ function BannerNewFeature() {
           <p className="flex justify-center whitespace-nowrap text-[10px] leading-tight sm:text-sm sm:whitespace-normal">
             <a href="tel:+19706315800" className="group">
               <span className="font-semibold">
-                Looking to improve your properties performance?
+                Looking to improve your property's performance?
               </span>{" "}
-              Reach out to me directly at (970) 631-5800
+              Contact me directly at (970) 631-5800
             </a>
           </p>
         </div>

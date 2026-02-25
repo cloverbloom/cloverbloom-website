@@ -4,7 +4,6 @@ import NavbarDemo from "@/components/navbar-demo";
 import { AboutCloverbloom } from "@/components/ui/about-cloverbloom";
 import { FeatureCards } from "@/components/ui/feature-cards";
 import { ProfileCard } from "@/components/ui/profile-card";
-import { RainbowButton } from "@/components/ui/rainbow-button";
 import FooterSection from "@/components/footer-section";
 
 export default function Home() {
@@ -14,27 +13,13 @@ export default function Home() {
       <NavbarDemo />
       <div className="relative">
         <HeroSectionDemo />
-        <img
-          src="/arrow-1.svg"
-          alt=""
-          className="pointer-events-none absolute left-[calc(40%+115px)] top-[calc(32%-85px)] hidden w-44 origin-center rotate-[-5deg] opacity-80 sm:block md:w-64 lg:w-80"
-          aria-hidden="true"
-          draggable={false}
-        />
         <div className="h-0" aria-hidden="true" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 -mb-4 flex w-full items-end justify-end pr-10 md:pr-16 max-sm:static max-sm:mt-4 max-sm:-mb-2 max-sm:items-center max-sm:justify-center max-sm:pr-0">
-          <div className="pointer-events-auto flex flex-col items-center gap-4">
-            <a
-              href="https://cal.com/garrett-nelson/discovery-call"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <RainbowButton className="text-base">Get Started Today!</RainbowButton>
-            </a>
+        <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 -mb-4 flex w-full max-w-[1440px] -translate-x-1/2 items-end justify-end pr-10 md:pr-16 max-sm:static max-sm:mt-4 max-sm:-mb-2 max-sm:translate-x-0 max-sm:items-center max-sm:justify-center max-sm:pr-0">
+          <div className="pointer-events-auto flex flex-col items-center">
             <img
               src="/hero-garrett.webp"
               alt="Garrett"
-              className="block h-[320px] w-auto object-contain max-sm:h-52"
+              className="block h-[224px] w-auto object-contain max-sm:h-[146px]"
               draggable={false}
             />
           </div>

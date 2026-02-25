@@ -4,6 +4,7 @@ import React from "react";
 import { createPortal } from "react-dom";
 
 import { Alert } from "@/components/ui/alert";
+import { NOTIFICATION_DURATION_MS } from "@/lib/notifications";
 import { CircleCheck } from "lucide-react";
 
 const members = [
@@ -25,7 +26,7 @@ export default function TeamSection() {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(type);
-      window.setTimeout(() => setCopied(null), 2000);
+      window.setTimeout(() => setCopied(null), NOTIFICATION_DURATION_MS);
     } catch {
       setCopied(null);
     }
@@ -66,7 +67,7 @@ export default function TeamSection() {
                   {member.role}
                 </div>
               </div>
-              <div className="mt-2 space-y-1.5 text-sm text-left">
+              <div className="mt-2 space-y-2 text-sm text-left">
                 <button
                   type="button"
                   className="flex w-full items-center justify-start gap-2 text-left text-foreground/80 hover:text-foreground cursor-pointer"

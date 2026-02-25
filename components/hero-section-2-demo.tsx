@@ -8,12 +8,6 @@ export default function HeroSectionDemo() {
   return (
     <div className="w-full">
       <HeroSection
-        logo={{
-          url: "/profile-garrett.webp",
-          alt: "Company Logo",
-          text: "Property Manager",
-        }}
-        slogan="GARRETT NELSON"
         title={
           <>
             How Can I Turn Your Airbnb <br />
@@ -22,7 +16,11 @@ export default function HeroSectionDemo() {
         }
         subtitle="With obsessive management that makes you more money without Airbnb being a second job."
         callToAction={{
-          text: "JOIN NOW TO SAVE 5%",
+          text: "",
+          href: "https://cal.com/garrett-nelson/discovery-call",
+        }}
+        bottomAction={{
+          text: "Get Your FREE Income Projection",
           href: "https://cal.com/garrett-nelson/discovery-call",
         }}
         backgroundImages={["/hero-garrett.webp", "/hero-garrett.webp", "/hero-garrett.webp"]}

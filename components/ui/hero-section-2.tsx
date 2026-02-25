@@ -2,11 +2,13 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe, Mail, MapPin, Phone } from "lucide-react";
+import { CircleCheck, Globe, Mail, MapPin, Phone } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { openEvaluationDialog } from "@/lib/evaluation-intake";
+import { NOTIFICATION_DURATION_MS } from "@/lib/notifications";
 import { Alert } from "@/components/ui/alert";
-import { CircleCheck } from "lucide-react";
+import { RainbowButton } from "@/components/ui/rainbow-button";
 
 // Icon component for contact details
 const InfoIcon = ({
@@ -48,6 +50,10 @@ interface HeroSectionProps
     text: string;
     href: string;
   };
+  bottomAction?: {
+    text: string;
+    href: string;
+  };
   backgroundImages: [string, string, string];
   contactInfo: {
     website: string;
@@ -66,6 +72,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
       title,
       subtitle,
       callToAction,
+      bottomAction,
       backgroundImages,
       contactInfo,
       ...props
@@ -96,17 +103,36 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
       },
     };
 
-    const [copied, setCopied] = React.useState<null | "phone" | "email">(null);
+    const [copied, setCopied] = React.useState(false);
+    const notificationTimeoutRef = React.useRef<number | null>(null);
+
+    const showCopiedNotification = () => {
+      if (notificationTimeoutRef.current) {
+        window.clearTimeout(notificationTimeoutRef.current);
+      }
+      setCopied(true);
+      notificationTimeoutRef.current = window.setTimeout(() => {
+        setCopied(false);
+        notificationTimeoutRef.current = null;
+      }, NOTIFICATION_DURATION_MS);
+    };
 
     const handleCopy = async (value: string) => {
       try {
         await navigator.clipboard.writeText(value);
-        setCopied("phone");
-        window.setTimeout(() => setCopied(null), 2000);
+        showCopiedNotification();
       } catch {
-        setCopied(null);
+        setCopied(false);
       }
     };
+
+    React.useEffect(() => {
+      return () => {
+        if (notificationTimeoutRef.current) {
+          window.clearTimeout(notificationTimeoutRef.current);
+        }
+      };
+    }, []);
 
     const contactItems = [
       contactInfo.website && { type: "website" as const, value: contactInfo.website },
@@ -114,15 +140,6 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
       contactInfo.email && { type: "email" as const, value: contactInfo.email },
       contactInfo.address && { type: "address" as const, value: contactInfo.address },
     ].filter(Boolean) as { type: "website" | "phone" | "email" | "address"; value: string }[];
-
-    const contactGridCols =
-      contactItems.length >= 4
-        ? "sm:grid-cols-4"
-        : contactItems.length === 3
-          ? "sm:grid-cols-3"
-          : contactItems.length === 2
-            ? "sm:grid-cols-2"
-            : "sm:grid-cols-1";
 
     return (
       <>
@@ -138,12 +155,12 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
           {...props}
         >
           {/* Left Side: Content */}
-          <div className="relative z-10 flex w-full flex-col justify-between p-8 md:w-1/2 md:p-12 lg:w-3/5 lg:p-16">
+          <div className="relative z-10 flex w-full flex-col items-center justify-center gap-12 p-8 text-center md:p-12 lg:p-16">
               {/* Top Section: Logo & Main Content */}
-              <div>
-                <motion.header className="mb-12" variants={itemVariants}>
-                  {logo && (
-                    <div className="flex items-center">
+              <div className="w-full max-w-2xl space-y-12">
+                {logo && (
+                  <motion.header variants={itemVariants}>
+                    <div className="flex items-center justify-center">
                       <img src={logo.url} alt={logo.alt} className="mr-3 h-8" />
                       <div>
                         {logo.text && (
@@ -158,10 +175,10 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                         )}
                       </div>
                     </div>
-                  )}
-                </motion.header>
+                  </motion.header>
+                )}
 
-                <motion.main variants={containerVariants}>
+                <motion.main className="space-y-12" variants={containerVariants}>
                   <motion.h1
                     className="text-4xl font-bold leading-tight text-foreground md:text-5xl"
                     variants={itemVariants}
@@ -169,42 +186,39 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                     {title}
                   </motion.h1>
                   <motion.div
-                    className="my-6 h-1 w-20 bg-primary"
+                    className="mx-auto h-1 w-20 bg-primary"
                     variants={itemVariants}
                   ></motion.div>
                   <motion.p
-                    className="mb-8 max-w-md text-lg text-muted-foreground"
+                    className="mx-auto max-w-md text-lg text-muted-foreground"
                     variants={itemVariants}
                   >
                     {subtitle}
                   </motion.p>
-                  <motion.a
-                    href={callToAction.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-bold tracking-widest text-primary transition-colors hover:text-primary/80"
-                    variants={itemVariants}
-                  >
-                    {callToAction.text}
-                  </motion.a>
+                  {callToAction.text.trim() && (
+                    <motion.a
+                      href={callToAction.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-bold tracking-widest text-primary transition-colors hover:text-primary/80"
+                      variants={itemVariants}
+                    >
+                      {callToAction.text}
+                    </motion.a>
+                  )}
                 </motion.main>
               </div>
 
               {/* Bottom Section: Footer Info */}
-              <motion.footer className="mt-12 w-full" variants={itemVariants}>
-                <div
-                  className={cn(
-                    "grid grid-cols-1 gap-6 text-xs text-muted-foreground",
-                    contactGridCols
-                  )}
-                >
+              <motion.footer className="w-full max-w-2xl space-y-12" variants={itemVariants}>
+                <div className="flex flex-col items-center gap-y-12 text-xs text-muted-foreground sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-[27px]">
                   {contactItems.map((item) =>
                     item.type === "phone" || item.type === "email" ? (
                       <button
                         key={`${item.type}-${item.value}`}
                         type="button"
                         className="flex items-center text-left cursor-pointer"
-                    onClick={() => handleCopy(item.value)}
+                        onClick={() => handleCopy(item.value)}
                       >
                         <InfoIcon type={item.type} />
                         <span>{item.value}</span>
@@ -220,11 +234,19 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                     )
                   )}
                 </div>
+                {bottomAction && (
+                  <div className="flex justify-center">
+                    <RainbowButton
+                      type="button"
+                      className="text-base"
+                      onClick={() => openEvaluationDialog()}
+                    >
+                      {bottomAction.text}
+                    </RainbowButton>
+                  </div>
+                )}
               </motion.footer>
           </div>
-
-          {/* Right Side: Spacer for layout */}
-          <div className="w-full md:w-1/2 lg:w-2/5" aria-hidden="true" />
         </motion.section>
         <div
           className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${

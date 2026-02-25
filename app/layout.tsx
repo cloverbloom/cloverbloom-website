@@ -14,30 +14,30 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cloverbloom.co"),
-  title: "Cloverbloom Co-Hosting | Hands-On Airbnb Management",
+  title: "Cloverbloom Co-Hosting | Turn Your Airbnb Into a Hands-Free Asset",
   description:
-    "Cloverbloom Co-Hosting is a hands-on Airbnb co-hosting partner. We handle guest communication, pricing, calendar management, and optimization so your property performs like an asset, not a second job.",
+    "Cloverbloom helps Airbnb owners run high-performing, hands-free assets. We handle guest communication, pricing optimization, calendar coordination, and turnover operations so Airbnb does not become a second job.",
   keywords: [
     "Cloverbloom",
     "Airbnb co-hosting",
     "Airbnb management",
-    "short-term rental management",
+    "short-term rental co-hosting",
     "Airbnb pricing",
     "Airbnb optimization",
-    "property management",
+    "hands-free Airbnb",
   ],
   openGraph: {
     title: "Cloverbloom Co-Hosting",
     description:
-      "Hands-on Airbnb co-hosting focused on performance, pricing, and operations.",
+      "Turn your Airbnb into a hands-free asset with hands-on co-hosting focused on pricing, performance, and operations.",
     url: "https://cloverbloom.co",
     siteName: "Cloverbloom",
     images: [
       {
-        url: "/footer-garrett.webp",
+        url: "/meta-image.webp",
         width: 1200,
         height: 630,
-        alt: "Garrett Nelson - Cloverbloom",
+        alt: "Cloverbloom STR Operations",
       },
     ],
     locale: "en_US",
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Cloverbloom Co-Hosting",
     description:
-      "Hands-on Airbnb co-hosting focused on performance, pricing, and operations.",
-    images: ["/footer-garrett.webp"],
+      "Turn your Airbnb into a hands-free asset with hands-on co-hosting focused on pricing, performance, and operations.",
+    images: ["/meta-image.webp"],
   },
 };
 

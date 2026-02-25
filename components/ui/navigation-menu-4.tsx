@@ -1,7 +1,10 @@
 "use client";
 
+import React from "react";
 import { Bell } from "lucide-react";
+import { CircleAlert } from "lucide-react";
 
+import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -68,12 +71,7 @@ const navigationLinks = [
     external: true,
   },
   { href: "#meet-garrett", label: "About" },
-  { href: "#about-cloverbloom", label: "Case Studies" },
-  {
-    href: "https://www.linkedin.com/in/garrettfnelson",
-    label: "LinkedIn",
-    external: true,
-  },
+  { href: "#", label: "Case Studies", type: "comingSoon" as const },
   { href: "#", label: "Contact", type: "dialog" as const },
 ];
 
@@ -88,7 +86,7 @@ function NotificationMenu() {
             variant="destructive"
             className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs flex items-center justify-center"
           >
-            1
+            2
           </Badge>
         </Button>
       </DropdownMenuTrigger>
@@ -96,17 +94,27 @@ function NotificationMenu() {
         <DropdownMenuLabel className="flex items-center justify-between">
           Notifications
           <Badge variant="secondary" className="ml-2">
-            1 new
+            2 new
           </Badge>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="flex-col items-start p-3">
           <div className="flex w-full items-center justify-between">
-            <span className="font-medium">Discounted pricing announced</span>
+            <span className="font-medium">Effect on Annual Revenue</span>
             <span className="text-xs text-muted-foreground">Now</span>
           </div>
           <span className="text-sm text-muted-foreground mt-1">
-            Founding clients get special rates for a limited time.
+            Studies show professional management increase annual revenue by 25-35% on average.
+          </span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="flex-col items-start p-3">
+          <div className="flex w-full items-center justify-between">
+            <span className="font-medium">Professional vs. DIY Pricing</span>
+            <span className="text-xs text-muted-foreground">Now</span>
+          </div>
+          <span className="text-sm text-muted-foreground mt-1">
+            Professional pricing strategies performs 15-20% better than manual pricing on average.
           </span>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -115,6 +123,28 @@ function NotificationMenu() {
 }
 
 export default function NavigationMenu4() {
+  const [showCaseStudiesNotice, setShowCaseStudiesNotice] = React.useState(false);
+  const caseStudiesTimeoutRef = React.useRef<number | null>(null);
+
+  const handleCaseStudiesClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    if (caseStudiesTimeoutRef.current) {
+      window.clearTimeout(caseStudiesTimeoutRef.current);
+    }
+    setShowCaseStudiesNotice(true);
+    caseStudiesTimeoutRef.current = window.setTimeout(() => {
+      setShowCaseStudiesNotice(false);
+    }, 2000);
+  };
+
+  React.useEffect(() => {
+    return () => {
+      if (caseStudiesTimeoutRef.current) {
+        window.clearTimeout(caseStudiesTimeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <Dialog>
       <header className="border-b border-transparent">
@@ -154,8 +184,8 @@ export default function NavigationMenu4() {
               <PopoverContent align="start" className="w-64 p-2 md:hidden">
                 <NavigationMenu className="max-w-none *:w-full">
                   <NavigationMenuList className="flex-col items-start gap-1 md:gap-2">
-                    {navigationLinks.map((link, index) => (
-                      <NavigationMenuItem key={index} className="w-full">
+                    {navigationLinks.map((link) => (
+                      <NavigationMenuItem key={link.label} className="w-full">
                         <NavigationMenuLink asChild>
                           {link.type === "dialog" ? (
                             <DialogTrigger asChild>
@@ -163,6 +193,14 @@ export default function NavigationMenu4() {
                                 {link.label}
                               </a>
                             </DialogTrigger>
+                          ) : link.type === "comingSoon" ? (
+                            <button
+                              type="button"
+                              className="w-full px-2 py-2 text-left"
+                              onClick={handleCaseStudiesClick}
+                            >
+                              {link.label}
+                            </button>
                           ) : (
                             <a
                               href={link.href}
@@ -190,8 +228,8 @@ export default function NavigationMenu4() {
             <div className="max-md:hidden">
               <NavigationMenu>
                 <NavigationMenuList>
-                  {navigationLinks.map((link, index) => (
-                    <NavigationMenuItem key={index}>
+                  {navigationLinks.map((link) => (
+                    <NavigationMenuItem key={link.label}>
                       {link.type === "dialog" ? (
                         <DialogTrigger asChild>
                           <button
@@ -201,6 +239,14 @@ export default function NavigationMenu4() {
                             {link.label}
                           </button>
                         </DialogTrigger>
+                      ) : link.type === "comingSoon" ? (
+                        <button
+                          type="button"
+                          className="text-muted-foreground hover:text-primary py-1.5 px-2 font-medium"
+                          onClick={handleCaseStudiesClick}
+                        >
+                          {link.label}
+                        </button>
                       ) : (
                         <NavigationMenuLink asChild>
                           <a
@@ -227,6 +273,21 @@ export default function NavigationMenu4() {
           </div>
         </div>
       </header>
+      <div
+        className={`fixed bottom-6 right-6 z-[120] transition-all duration-300 ${
+          showCaseStudiesNotice ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+        }`}
+      >
+        <Alert
+          layout="row"
+          variant="default"
+          isNotification
+          icon={<CircleAlert className="text-red-500" size={16} strokeWidth={2} />}
+          className="border-border text-foreground"
+        >
+          <p className="text-sm text-foreground">Case Studies coming soon</p>
+        </Alert>
+      </div>
       <DialogContent onCloseAutoFocus={(event) => event.preventDefault()}>
         <DialogHeader>
           <DialogTitle className="sr-only">Team contact</DialogTitle>

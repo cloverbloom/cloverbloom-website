@@ -13,7 +13,6 @@ const members = [
     avatar: "/footer-garrett.webp",
     phone: "+1 (970) 631-5800",
     email: "garrett@cloverbloom.co",
-    linkedin: "https://www.linkedin.com/in/garrettfnelson",
     location: "San Diego, CA",
   },
 ];
@@ -111,24 +110,6 @@ export default function TeamSection() {
                   </span>
                   {member.email}
                 </button>
-                <a
-                  className="flex w-full items-center justify-start gap-2 text-left text-foreground/80 hover:text-foreground cursor-pointer"
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="inline-flex items-center justify-center">
-                    <svg
-                      className="h-4 w-4 text-primary"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0-.02-5ZM3 9h4v12H3zM9 9h3.8v1.6h.1c.5-1 1.8-2.1 3.7-2.1 4 0 4.7 2.5 4.7 5.8V21h-4v-5.2c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9z" />
-                    </svg>
-                  </span>
-                  www.linkedin.com/garrettfnelson
-                </a>
                 <div className="flex w-full items-center justify-start gap-2 text-left text-foreground/80">
                   <span className="inline-flex items-center justify-center">
                     <svg

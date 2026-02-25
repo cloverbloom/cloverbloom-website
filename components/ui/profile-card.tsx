@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 import { BGPattern } from "@/components/ui/bg-pattern";
-import { MeetGarrettTimeline } from "@/components/ui/meet-garrett-timeline";
 
 export interface ProfileCardProps {
   name?: string;
@@ -20,9 +19,9 @@ export function ProfileCard(props: ProfileCardProps) {
     name = "Garrett Nelson",
     title = "Founder",
     bioParts = [
-      "Garrett Nelson is an entrepreneur and the founder of Cloverbloom, a hands-on property management team that specializes in helping busy Airbnb owners earn more while reclaiming their time.",
+      "Garrett Nelson is a short-term rental investor and the founder of Cloverbloom, an expert Airbnb operation team that specializes in helping busy Airbnb owners earn more while reclaiming their time and peace of mind.",
       "\"I work with owners who want their Airbnb to function like an asset, not a second job.\"",
-      "Previously working as an Electrical Engineer for the past two years, a passion for real estate and hospitality drove a massive career change. After working with the BNB Investor Academy for the last 8 months, Garrett decided to go all-in on Airbnb with one clear objective — provide owners so much value they wish they'd started sooner.",
+      "Previously working as an Industrial Automation Engineer for the past two years, a passion for real estate and business sparked a complete career change. After working with the BNB Investor Academy for the last 12 months, Cloverbloom was founded with one clear objective — give owners so much value they wish they'd started sooner.",
     ],
     imageUrl = "/meet-garrett.webp",
     className,
@@ -56,13 +55,6 @@ export function ProfileCard(props: ProfileCardProps) {
               draggable={false}
             />
           </div>
-          <img
-            src="/arrow-2.svg"
-            alt=""
-            className="pointer-events-none absolute left-[220px] top-[550px] hidden w-36 origin-top-left rotate-[5deg] scale-y-90 opacity-60 sm:block"
-            aria-hidden="true"
-            draggable={false}
-          />
 
           <motion.div
             initial={{ opacity: 0, x: 20 }}
@@ -111,9 +103,6 @@ export function ProfileCard(props: ProfileCardProps) {
           </div>
         </motion.div>
 
-        <div className="md:ml-[400px] md:max-w-2xl">
-          <MeetGarrettTimeline />
-        </div>
       </div>
     </section>
   );

@@ -76,12 +76,12 @@ export default function NavigationMenu4() {
   return (
     <Dialog>
       <header className="border-b border-transparent">
-        <div className="flex h-16 items-center justify-between gap-4 px-8 md:px-12 lg:px-16">
-          <div className="flex items-center gap-4">
+        <div className="flex h-16 items-center px-8 md:px-12 lg:px-16">
+          <div className="relative flex w-full items-center justify-center md:justify-start md:gap-4">
             {/* Mobile menu trigger */}
             <Popover>
               <PopoverTrigger asChild>
-                <Button className="group size-11 cursor-pointer md:hidden" variant="ghost" size="icon">
+                <Button className="group absolute left-0 size-11 cursor-pointer md:hidden" variant="ghost" size="icon">
                   <svg
                     className="pointer-events-none"
                     width={20}
@@ -147,7 +147,7 @@ export default function NavigationMenu4() {
               </PopoverContent>
             </Popover>
             {/* Logo */}
-            <Link href="/" className="text-primary hover:text-primary/90 order-first cursor-pointer md:order-none">
+            <Link href="/" className="text-primary hover:text-primary/90 cursor-pointer">
               <img src="/logo-blue.webp" alt="Cloverbloom logo" className="h-10 w-auto shrink-0" />
             </Link>
             {/* Desktop nav */}

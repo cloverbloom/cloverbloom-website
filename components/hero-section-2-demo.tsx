@@ -20,7 +20,7 @@ export default function HeroSectionDemo() {
           href: "https://cal.com/garrett-nelson/discovery-call",
         }}
         bottomAction={{
-          text: "Get Your FREE Income Projection",
+          text: "Get FREE Income Projection",
           href: "https://cal.com/garrett-nelson/discovery-call",
         }}
         backgroundImages={["/hero-garrett.webp", "/hero-garrett.webp", "/hero-garrett.webp"]}

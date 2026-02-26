@@ -13,10 +13,10 @@ function BannerNewFeature() {
         <div className="w-full">
           <p className="flex justify-center whitespace-nowrap text-[10px] leading-tight sm:text-sm sm:whitespace-normal">
             <a href="tel:+19706315800" className="group">
-              <span className="font-semibold">
-                Looking to improve your property's performance?
-              </span>{" "}
-              Contact me directly at (970) 631-5800
+              <span className="hidden font-semibold sm:inline">
+                Looking to improve your property&apos;s performance?{" "}
+              </span>
+              <span>Contact me directly at (970) 631-5800</span>
             </a>
           </p>
         </div>

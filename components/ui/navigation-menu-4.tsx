@@ -2,13 +2,9 @@
 
 import React from "react";
 import Link from "next/link";
-import { Bell } from "lucide-react";
-import { CircleAlert } from "lucide-react";
 
-import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { EvaluationIntakeDialog } from "@/components/ui/evaluation-intake-dialog";
-import { NOTIFICATION_DURATION_MS } from "@/lib/notifications";
 import { openEvaluationDialog } from "@/lib/evaluation-intake";
 import {
   NavigationMenu,
@@ -22,15 +18,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
@@ -74,83 +61,14 @@ const navigationLinks = [
     external: true,
   },
   { href: "#meet-garrett", label: "About" },
-  { href: "#", label: "Case Studies", type: "comingSoon" as const },
   { href: "#", label: "Contact", type: "dialog" as const },
 ];
 
-// Custom NotificationMenu Component
-function NotificationMenu() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="size-8 relative cursor-pointer">
-          <Bell className="h-4 w-4" />
-          <Badge
-            variant="destructive"
-            className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 text-xs flex items-center justify-center"
-          >
-            2
-          </Badge>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-80">
-        <DropdownMenuLabel className="flex items-center justify-between">
-          Notifications
-          <Badge variant="secondary" className="ml-2">
-            2 new
-          </Badge>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex-col items-start p-3">
-          <div className="flex w-full items-center justify-between">
-            <span className="font-medium">Effect on Annual Revenue</span>
-            <span className="text-xs text-muted-foreground">Now</span>
-          </div>
-          <span className="text-sm text-muted-foreground mt-1">
-            Studies show professional management increase annual revenue by 25-35% on average.
-          </span>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem className="flex-col items-start p-3">
-          <div className="flex w-full items-center justify-between">
-            <span className="font-medium">Professional vs. DIY Pricing</span>
-            <span className="text-xs text-muted-foreground">Now</span>
-          </div>
-          <span className="text-sm text-muted-foreground mt-1">
-            Professional pricing strategies performs 15-20% better than manual pricing on average.
-          </span>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
-
 export default function NavigationMenu4() {
-  const [showCaseStudiesNotice, setShowCaseStudiesNotice] = React.useState(false);
-  const caseStudiesTimeoutRef = React.useRef<number | null>(null);
-
-  const handleCaseStudiesClick = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
-    if (caseStudiesTimeoutRef.current) {
-      window.clearTimeout(caseStudiesTimeoutRef.current);
-    }
-    setShowCaseStudiesNotice(true);
-    caseStudiesTimeoutRef.current = window.setTimeout(() => {
-      setShowCaseStudiesNotice(false);
-    }, NOTIFICATION_DURATION_MS);
-  };
   const handleEvaluationClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     openEvaluationDialog();
   };
-
-  React.useEffect(() => {
-    return () => {
-      if (caseStudiesTimeoutRef.current) {
-        window.clearTimeout(caseStudiesTimeoutRef.current);
-      }
-    };
-  }, []);
 
   return (
     <Dialog>
@@ -208,14 +126,6 @@ export default function NavigationMenu4() {
                             >
                               {link.label}
                             </button>
-                          ) : link.type === "comingSoon" ? (
-                            <button
-                              type="button"
-                              className="w-full cursor-pointer px-2 py-2 text-left"
-                              onClick={handleCaseStudiesClick}
-                            >
-                              {link.label}
-                            </button>
                           ) : (
                             <a
                               href={link.href}
@@ -262,14 +172,6 @@ export default function NavigationMenu4() {
                         >
                           {link.label}
                         </button>
-                      ) : link.type === "comingSoon" ? (
-                        <button
-                          type="button"
-                          className="text-muted-foreground hover:text-primary cursor-pointer py-1.5 px-2 font-medium"
-                          onClick={handleCaseStudiesClick}
-                        >
-                          {link.label}
-                        </button>
                       ) : (
                         <NavigationMenuLink asChild>
                           <a
@@ -291,30 +193,12 @@ export default function NavigationMenu4() {
               </NavigationMenu>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <NotificationMenu />
-          </div>
         </div>
         <div className="px-8 pb-2 text-center md:px-12 lg:px-16">
           <p className="text-lg font-bold text-foreground">CLOVERBLOOM</p>
           <p className="text-xs tracking-wider text-muted-foreground">STR Operations</p>
         </div>
       </header>
-      <div
-        className={`fixed bottom-6 right-6 z-[120] transition-all duration-300 ${
-          showCaseStudiesNotice ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-        }`}
-      >
-        <Alert
-          layout="row"
-          variant="default"
-          isNotification
-          icon={<CircleAlert className="text-red-500" size={16} strokeWidth={2} />}
-          className="border-border text-foreground"
-        >
-          <p className="text-sm text-foreground">Case Studies coming soon</p>
-        </Alert>
-      </div>
       <DialogContent onCloseAutoFocus={(event) => event.preventDefault()}>
         <DialogHeader>
           <DialogTitle className="sr-only">Team contact</DialogTitle>

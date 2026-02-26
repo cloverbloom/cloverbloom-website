@@ -11,7 +11,7 @@ function BannerNewFeature() {
         rounded="none"
       >
         <div className="w-full">
-          <p className="flex justify-center whitespace-nowrap text-[10px] leading-tight sm:text-sm sm:whitespace-normal">
+          <p className="flex justify-center px-2 text-center text-[20px] font-bold leading-tight sm:px-0 sm:text-sm sm:font-normal sm:whitespace-normal">
             <a href="tel:+19706315800" className="group">
               <span className="hidden font-semibold sm:inline">
                 Looking to improve your property&apos;s performance?{" "}

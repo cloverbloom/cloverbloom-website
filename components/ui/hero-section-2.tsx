@@ -238,7 +238,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                   <div className="flex justify-center">
                     <RainbowButton
                       type="button"
-                      className="text-base"
+                      className="px-4 text-sm whitespace-nowrap sm:px-8 sm:text-base"
                       onClick={() => openEvaluationDialog()}
                     >
                       {bottomAction.text}

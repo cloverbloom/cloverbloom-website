@@ -10,7 +10,7 @@ export default function HeroSectionDemo() {
       <HeroSection
         title={
           <>
-            How Can I Turn Your Airbnb <br />
+            How Can I Turn Your Airbnb <br className="hidden sm:block" />
             Into A <span className="text-[#2154D6]">Hands-Free Asset</span>?
           </>
         }

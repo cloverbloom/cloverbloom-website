@@ -65,6 +65,9 @@ const navigationLinks = [
 ];
 
 export default function NavigationMenu4() {
+  const mobileNavItemClass =
+    "flex w-full items-center rounded-sm px-2 py-2 text-left text-sm leading-5";
+
   const handleEvaluationClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     openEvaluationDialog();
@@ -108,37 +111,35 @@ export default function NavigationMenu4() {
               </PopoverTrigger>
               <PopoverContent align="start" className="w-64 p-2 md:hidden">
                 <NavigationMenu className="max-w-none *:w-full">
-                  <NavigationMenuList className="flex-col items-start gap-1 md:gap-2">
+                  <NavigationMenuList className="flex-col items-start gap-1 space-x-0">
                     {navigationLinks.map((link) => (
                       <NavigationMenuItem key={link.label} className="w-full">
-                        <NavigationMenuLink asChild>
-                          {link.type === "dialog" ? (
-                            <DialogTrigger asChild>
-                              <a className="cursor-pointer px-2 py-2">
-                                {link.label}
-                              </a>
-                            </DialogTrigger>
-                          ) : link.type === "evaluation" ? (
-                            <button
-                              type="button"
-                              className="w-full cursor-pointer px-2 py-2 text-left"
-                              onClick={handleEvaluationClick}
-                            >
+                        {link.type === "dialog" ? (
+                          <DialogTrigger asChild>
+                            <button type="button" className={`${mobileNavItemClass} cursor-pointer`}>
                               {link.label}
                             </button>
-                          ) : (
-                            <a
-                              href={link.href}
-                              target={link.external ? "_blank" : undefined}
-                              rel={link.external ? "noopener noreferrer" : undefined}
-                              className="cursor-pointer px-2 py-2"
-                              onClick={handleAnchorClick}
-                              data-offset="0"
-                            >
-                              {link.label}
-                            </a>
-                          )}
-                        </NavigationMenuLink>
+                          </DialogTrigger>
+                        ) : link.type === "evaluation" ? (
+                          <button
+                            type="button"
+                            className={`${mobileNavItemClass} cursor-pointer`}
+                            onClick={handleEvaluationClick}
+                          >
+                            {link.label}
+                          </button>
+                        ) : (
+                          <a
+                            href={link.href}
+                            target={link.external ? "_blank" : undefined}
+                            rel={link.external ? "noopener noreferrer" : undefined}
+                            className={`${mobileNavItemClass} cursor-pointer`}
+                            onClick={handleAnchorClick}
+                            data-offset="0"
+                          >
+                            {link.label}
+                          </a>
+                        )}
                       </NavigationMenuItem>
                     ))}
                   </NavigationMenuList>

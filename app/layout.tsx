@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   keywords: [
     "Cloverbloom",
     "Airbnb co-hosting",
-    "Airbnb management",
+    "Airbnb operational management",
     "short-term rental co-hosting",
     "Airbnb pricing",
     "Airbnb optimization",

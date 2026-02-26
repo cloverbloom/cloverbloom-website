@@ -24,7 +24,7 @@ function CTA() {
               className="text-base"
               onClick={() => openEvaluationDialog()}
             >
-              Create my FREE Income Projection
+              Create FREE Income Projection
             </RainbowButton>
           </div>
         </div>

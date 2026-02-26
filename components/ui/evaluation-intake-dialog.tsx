@@ -251,31 +251,29 @@ export function EvaluationIntakeDialog() {
           </form>
         </DialogContent>
       </Dialog>
-      <div
-        className={`fixed bottom-6 right-6 z-[120] transition-all duration-300 ${
-          submissionNotice !== "none" ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-        }`}
-      >
-        <Alert
-          layout="row"
-          variant="default"
-          isNotification
-          icon={
-            submissionNotice === "success" ? (
-              <CircleCheck className="text-emerald-500" size={16} strokeWidth={2} />
-            ) : (
-              <CircleAlert className="text-red-500" size={16} strokeWidth={2} />
-            )
-          }
-          className="border-border text-foreground"
-        >
-          <p className="text-sm text-foreground">
-            {submissionNotice === "success"
-              ? "Submitted successfully. We will be in touch shortly!"
-              : "Submission failed. Please try again."}
-          </p>
-        </Alert>
-      </div>
+      {submissionNotice !== "none" && (
+        <div className="fixed bottom-6 right-6 z-[120] transition-all duration-300">
+          <Alert
+            layout="row"
+            variant="default"
+            isNotification
+            icon={
+              submissionNotice === "success" ? (
+                <CircleCheck className="text-emerald-500" size={16} strokeWidth={2} />
+              ) : (
+                <CircleAlert className="text-red-500" size={16} strokeWidth={2} />
+              )
+            }
+            className="border-border text-foreground"
+          >
+            <p className="text-sm text-foreground">
+              {submissionNotice === "success"
+                ? "Submitted successfully. We will be in touch shortly!"
+                : "Submission failed. Please try again."}
+            </p>
+          </Alert>
+        </div>
+      )}
     </>
   );
 }

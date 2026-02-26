@@ -248,21 +248,19 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
               </motion.footer>
           </div>
         </motion.section>
-        <div
-          className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
-            copied ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-          }`}
-        >
-          <Alert
-            layout="row"
-            variant="default"
-            isNotification
-            icon={<CircleCheck className="text-emerald-500" size={16} strokeWidth={2} />}
-            className="border-border text-foreground"
-          >
-            <p className="text-sm text-foreground">Copied to clipboard</p>
-          </Alert>
-        </div>
+        {copied && (
+          <div className="fixed bottom-6 right-6 z-50 transition-all duration-300">
+            <Alert
+              layout="row"
+              variant="default"
+              isNotification
+              icon={<CircleCheck className="text-emerald-500" size={16} strokeWidth={2} />}
+              className="border-border text-foreground"
+            >
+              <p className="text-sm text-foreground">Copied to clipboard</p>
+            </Alert>
+          </div>
+        )}
       </>
     );
   }

@@ -124,6 +124,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
 @keyframes rainbow {
   0% {
     background-position: 0%;

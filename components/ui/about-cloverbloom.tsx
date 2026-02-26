@@ -31,7 +31,7 @@ export function AboutCloverbloom() {
         />
         <CTA />
       </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex w-full items-end justify-end pr-6 md:pr-10 2xl:pr-10 max-sm:static max-sm:mt-4 max-sm:-mb-2 max-sm:justify-center max-sm:pr-0">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex w-full items-end justify-end pr-6 md:pr-10 2xl:pr-10 max-sm:static max-sm:mt-4 max-sm:justify-center max-sm:pr-0">
         <img
           src="/footer-garrett.webp"
           alt="Garrett headshot"

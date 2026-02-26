@@ -135,12 +135,9 @@ export default function TeamSection() {
         </div>
       </div>
       {mounted &&
+        copied &&
         createPortal(
-          <div
-            className={`fixed bottom-6 right-6 z-[120] transition-all duration-300 ${
-              copied ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-            }`}
-          >
+          <div className="fixed bottom-6 right-6 z-[120] transition-all duration-300">
             <Alert
               layout="row"
               variant="default"

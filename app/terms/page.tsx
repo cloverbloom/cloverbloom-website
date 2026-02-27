@@ -5,6 +5,9 @@ import FooterSection from "@/components/footer-section";
 export const metadata: Metadata = {
   title: "Terms & Conditions | Cloverbloom",
   description: "Terms and Conditions for Cloverbloom California, LLC",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 export default function TermsPage() {
@@ -27,9 +30,9 @@ export default function TermsPage() {
 
         <Section title="1. Acceptance of Terms">
           <p>
-            By accessing or using www.cloverbloom.co (the “Website") or engaging
-            services from Cloverbloom California, LLC (“Cloverbloom,” “Company,"
-            “we,” “us,” or “our"), you agree to be bound by these Terms &
+            By accessing or using www.cloverbloom.co (the “Website”) or engaging
+            services from Cloverbloom California, LLC (“Cloverbloom,” “Company,”
+            “we,” “us,” or “our”), you agree to be bound by these Terms &
             Conditions.
           </p>
           <p>

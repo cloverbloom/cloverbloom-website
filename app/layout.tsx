@@ -12,6 +12,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const googleSiteVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://cloverbloom.co"),
   title: "Cloverbloom Co-Hosting | Turn Your Airbnb Into a Hands-Free Asset",
@@ -26,11 +28,22 @@ export const metadata: Metadata = {
     "Airbnb optimization",
     "hands-free Airbnb",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "Cloverbloom Co-Hosting",
     description:
       "Turn your Airbnb into a hands-free asset with hands-on co-hosting focused on pricing, performance, and operations.",
-    url: "https://cloverbloom.co",
+    url: "https://cloverbloom.co/",
     siteName: "Cloverbloom",
     images: [
       {
@@ -50,6 +63,10 @@ export const metadata: Metadata = {
       "Turn your Airbnb into a hands-free asset with hands-on co-hosting focused on pricing, performance, and operations.",
     images: ["/meta-image.webp"],
   },
+  verification: {
+    google: googleSiteVerification,
+  },
+  category: "business",
 };
 
 export default function RootLayout({

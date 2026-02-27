@@ -39,7 +39,7 @@ export default function FooterSection() {
   };
 
   return (
-    <footer className="w-full bg-[#2154D6] pb-[env(safe-area-inset-bottom)] text-white">
+    <footer className="relative -mt-px w-full bg-[#2154D6] pb-[env(safe-area-inset-bottom)] text-white">
       <div className="space-y-6 px-8 py-8">
         <div className="flex items-center gap-6">
           <a
@@ -67,6 +67,12 @@ export default function FooterSection() {
             >
               About
             </a>
+            <Link href="/airbnb-co-hosting" className="hover:text-white">
+              Co-Hosting
+            </Link>
+            <Link href="/airbnb-management-san-diego" className="hover:text-white">
+              San Diego Airbnb Management
+            </Link>
             <a href="#contact" onClick={handleContactClick} className="hover:text-white">Contact</a>
             <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white">Terms &amp; Conditions</Link>

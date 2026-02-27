@@ -5,6 +5,9 @@ import FooterSection from "@/components/footer-section";
 export const metadata: Metadata = {
   title: "Privacy Policy | Cloverbloom",
   description: "Privacy Policy for Cloverbloom California, LLC",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 export default function PrivacyPolicyPage() {
@@ -26,8 +29,8 @@ export default function PrivacyPolicyPage() {
         <section className="space-y-10">
         <Section title="1. Introduction">
           <p>
-            Cloverbloom California, LLC (“Cloverbloom,” “Company,” “we,” “us,” or “our")
-            operates www.cloverbloom.co (the “Website") and provides short-term rental
+            Cloverbloom California, LLC (“Cloverbloom,” “Company,” “we,” “us,” or “our”)
+            operates www.cloverbloom.co (the “Website”) and provides short-term rental
             consulting and operational management services.
           </p>
           <p>

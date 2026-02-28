@@ -60,6 +60,7 @@ const navigationLinks = [
     label: "Calendar",
     external: true,
   },
+  { href: "/articles", label: "Articles" },
   { href: "#meet-garrett", label: "About" },
   { href: "#", label: "Contact", type: "dialog" as const },
 ];
@@ -128,6 +129,10 @@ export default function NavigationMenu4() {
                           >
                             {link.label}
                           </button>
+                        ) : link.href.startsWith("/") && !link.external ? (
+                          <Link href={link.href} className={`${mobileNavItemClass} cursor-pointer`}>
+                            {link.label}
+                          </Link>
                         ) : (
                           <a
                             href={link.href}
@@ -173,6 +178,15 @@ export default function NavigationMenu4() {
                         >
                           {link.label}
                         </button>
+                      ) : link.href.startsWith("/") && !link.external ? (
+                        <NavigationMenuLink asChild>
+                          <Link
+                            href={link.href}
+                            className="text-muted-foreground hover:text-primary cursor-pointer py-1.5 px-2 font-medium"
+                          >
+                            {link.label}
+                          </Link>
+                        </NavigationMenuLink>
                       ) : (
                         <NavigationMenuLink asChild>
                           <a
@@ -196,8 +210,13 @@ export default function NavigationMenu4() {
           </div>
         </div>
         <div className="px-8 pb-2 text-center md:px-12 lg:px-16">
+          <img
+            src="/logo-blue.webp"
+            alt="Cloverbloom logo"
+            className="mx-auto mb-1.5 h-9 w-auto"
+          />
           <p className="text-lg font-bold text-foreground">CLOVERBLOOM</p>
-          <p className="text-xs tracking-wider text-muted-foreground">STR Operations</p>
+          <p className="text-xs tracking-wider text-muted-foreground">Property Solutions</p>
         </div>
       </header>
       <DialogContent onCloseAutoFocus={(event) => event.preventDefault()}>

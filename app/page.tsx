@@ -130,17 +130,6 @@ export default function Home() {
       <NavbarDemo />
       <div className="relative">
         <HeroSectionDemo />
-        <div className="h-0" aria-hidden="true" />
-        <div className="pointer-events-none static z-20 mt-4 flex w-full max-w-[1440px] items-center justify-center pr-0 xl:absolute xl:bottom-0 xl:left-1/2 xl:mt-0 xl:-translate-x-1/2 xl:items-end xl:justify-end xl:pr-16">
-          <div className="pointer-events-auto flex flex-col items-center">
-            <img
-              src="/hero-garrett.webp"
-              alt="Garrett"
-              className="block h-[175px] w-auto object-contain xl:h-[224px]"
-              draggable={false}
-            />
-          </div>
-        </div>
       </div>
       <div className="pt-0 pb-2 md:pb-4">
         <ProfileCard />

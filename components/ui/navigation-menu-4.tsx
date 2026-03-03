@@ -151,10 +151,6 @@ export default function NavigationMenu4() {
                 </NavigationMenu>
               </PopoverContent>
             </Popover>
-            {/* Logo */}
-            <Link href="/" className="text-primary hover:text-primary/90 cursor-pointer">
-              <img src="/logo-blue.webp" alt="Cloverbloom logo" className="h-10 w-auto shrink-0" />
-            </Link>
             {/* Desktop nav */}
             <div className="max-md:hidden">
               <NavigationMenu>

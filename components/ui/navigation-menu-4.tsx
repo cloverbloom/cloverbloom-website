@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { EvaluationIntakeDialog } from "@/components/ui/evaluation-intake-dialog";
@@ -66,12 +67,28 @@ const navigationLinks = [
 ];
 
 export default function NavigationMenu4() {
+  const pathname = usePathname();
+  const router = useRouter();
   const mobileNavItemClass =
     "flex w-full items-center rounded-sm px-2 py-2 text-left text-sm leading-5";
 
   const handleEvaluationClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     openEvaluationDialog();
+  };
+
+  const handleNavAnchorClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const href = event.currentTarget.getAttribute("href");
+    if (!href || !href.startsWith("#")) return;
+    const target = document.querySelector(href);
+    if (!target) {
+      if (pathname !== "/") {
+        event.preventDefault();
+        router.push(`/${href}`);
+      }
+      return;
+    }
+    handleAnchorClick(event);
   };
 
   return (
@@ -139,7 +156,7 @@ export default function NavigationMenu4() {
                             target={link.external ? "_blank" : undefined}
                             rel={link.external ? "noopener noreferrer" : undefined}
                             className={`${mobileNavItemClass} cursor-pointer`}
-                            onClick={handleAnchorClick}
+                            onClick={handleNavAnchorClick}
                             data-offset="0"
                           >
                             {link.label}
@@ -190,7 +207,7 @@ export default function NavigationMenu4() {
                             target={link.external ? "_blank" : undefined}
                             rel={link.external ? "noopener noreferrer" : undefined}
                             className="text-muted-foreground hover:text-primary cursor-pointer py-1.5 px-2 font-medium"
-                            onClick={handleAnchorClick}
+                            onClick={handleNavAnchorClick}
                             data-offset="0"
                           >
                             {link.label}
